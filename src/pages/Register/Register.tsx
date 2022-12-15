@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
+import { HelmetProvider, Helmet } from 'react-helmet-async'
 import omit from 'lodash/omit'
 import Input from 'src/components/Input'
 import { schema, Schema } from 'src/utils/rules'
@@ -55,6 +56,12 @@ export default function Register() {
 
   return (
     <div className='bg-orange'>
+      <HelmetProvider>
+        <Helmet>
+          <title>Đăng ký ngay | Shopee Việt Nam</title>
+          <meta name='description' content='Đăng ký' data-react-helmet='true' />
+        </Helmet>
+      </HelmetProvider>
       <div className='container'>
         <div className='grid grid-cols-1 py-12 lg:grid-cols-5 lg:py-32 lg:pr-10'>
           <div className='lg:col-span-2 lg:col-start-4'>
@@ -72,7 +79,8 @@ export default function Register() {
                 name='password'
                 register={register}
                 type='password'
-                className='mt-2'
+                className='relative mt-2'
+                classNameEye='absolute top-[1rem] right-5 h-6 w-6 cursor-pointer'
                 errorMessage={errors.password?.message}
                 placeholder='Password'
                 autoComplete='on'
@@ -81,7 +89,8 @@ export default function Register() {
                 name='confirm_password'
                 register={register}
                 type='password'
-                className='mt-2'
+                className='relative mt-2'
+                classNameEye='absolute top-[1rem] right-5 h-6 w-6 cursor-pointer'
                 errorMessage={errors.confirm_password?.message}
                 placeholder='Confirm Password'
                 autoComplete='on'

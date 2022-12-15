@@ -50,9 +50,9 @@ export default function SortProductList({ queryConfig, pageSize }: Props) {
 
   return (
     <div className='bg-gray-300 py-4 px-3'>
-      <div className='flex flex-wrap items-center justify-between gap-2'>
-        <div className='flex flex-wrap items-center gap-2'>
-          <div className='mx-2 text-gray555'>Sắp xếp theo</div>
+      <div className='flex flex-wrap items-center justify-evenly gap-2 lg:justify-between'>
+        <div className='mb-3 flex flex-wrap items-center justify-center gap-2 lg:mb-0 lg:justify-start'>
+          <div className='mx-2 mb-2 w-full text-center text-gray555 lg:mb-0 lg:w-32 lg:text-start'>Sắp xếp theo</div>
           <button
             className={classNames('h-8 rounded-sm px-4 text-center text-sm capitalize shadow-sm ', {
               'bg-orange text-white hover:bg-orange/80': isActiveSortBy(sortBy.view),

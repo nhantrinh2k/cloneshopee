@@ -2,7 +2,7 @@
 
 export default function Footer() {
   return (
-    <footer className='bg-neutral-100 py-10'>
+    <footer className='bg-neutral-200 py-2 sm:py-10'>
       <div className='container'>
         <div className='mt-10 text-center text-sm'>
           <div className='mb-10 flex flex-col items-center justify-center md:flex-row'>

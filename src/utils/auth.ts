@@ -20,10 +20,10 @@ export const clearLS = () => {
 }
 
 export const getAccessTokenFromLS = () => {
-  localStorage.getItem('access_token') || ''
+  return localStorage.getItem('access_token') || ''
 }
 export const getRefreshTokenFromLS = () => {
-  localStorage.getItem('refresh_token') || ''
+  return localStorage.getItem('refresh_token') || ''
 }
 
 export const getProfileFromLS = () => {

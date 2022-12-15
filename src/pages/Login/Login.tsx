@@ -2,6 +2,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { useContext } from 'react'
+import { HelmetProvider, Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import authApi from 'src/apis/auth.api'
@@ -67,6 +68,13 @@ export default function Login() {
 
   return (
     <div className='bg-orange'>
+      <HelmetProvider>
+        <Helmet>
+          <title>Đăng nhập tài khoản - Mua thả ga</title>
+          <meta name='description' content='Đăng nhập' data-react-helmet='true' />
+        </Helmet>
+      </HelmetProvider>
+
       <div className='container'>
         <div className='grid grid-cols-1 py-12 lg:grid-cols-5 lg:py-32 lg:pr-10'>
           <div className='lg:col-span-2 lg:col-start-4'>
@@ -87,7 +95,8 @@ export default function Login() {
                   name='password'
                   register={register}
                   type='password'
-                  className='mt-2'
+                  className='relative mt-2'
+                  classNameEye='absolute top-[1rem] right-5 h-6 w-6 cursor-pointer'
                   errorMessage={errors.password?.message}
                   placeholder='Password'
                   autoComplete='on'

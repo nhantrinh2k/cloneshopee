@@ -12,6 +12,7 @@ module.exports = {
   theme: {
     backgroundPosition: {
       'right-bottom': '14.391143911439114% 99.41176470588235%',
+      'center': '50%'
 
     },
     extend: {
@@ -22,6 +23,7 @@ module.exports = {
         black87: 'rgba(0,0,0,.87)',
         grayeb: '#ebebeb',
         yellowrating: 'rgb(255, 167, 39)',
+        yellowratesale: 'rgba(255,212,36,.9)',
         orangebuttoncart: 'rgba(255,87,34,.1)',
         colordotted: 'rgba(0, 0, 0, 0.09)',
         colortextfooter: 'rgba(0,0,0,.65)'

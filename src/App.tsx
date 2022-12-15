@@ -9,9 +9,6 @@ function App() {
   const routeElements = useRouteElements()
   const { reset } = useContext(AppContext)
 
-  const { isAuthenticated } = useContext(AppContext)
-  console.log(isAuthenticated)
-
   useEffect(() => {
     LocalStorageEventTarget.addEventListener('clearLS', reset)
     return () => {

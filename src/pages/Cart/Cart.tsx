@@ -5,6 +5,7 @@ import keyBy from 'lodash/keyBy'
 import React, { useContext, useEffect, useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { HelmetProvider, Helmet } from 'react-helmet-async'
 import productApi from 'src/apis/product.api'
 import purchaseApi from 'src/apis/purchase.api'
 import cartempty from 'src/assets/images/cartempty.png'
@@ -161,7 +162,13 @@ export default function Cart() {
   }
 
   return (
-    <div className='bg-neutral-100 py-16'>
+    <div className='bg-neutral-100 py-4 md:py-16'>
+      <HelmetProvider>
+        <Helmet>
+          <title>Giỏ Hàng</title>
+          <meta name='description' data-react-helmet='true' />
+        </Helmet>
+      </HelmetProvider>
       <div className='container'>
         <div className='overflow-auto'>
           <div className='min-w-[1000px]'>
@@ -282,13 +289,13 @@ export default function Cart() {
                 ))}
               </div>
             ) : (
-              <div className='flex flex-col items-center justify-center p-2'>
+              <div className='flex flex-col items-start justify-center p-2 md:items-center'>
                 <img src={cartempty} alt='cart empty' className='h-24 w-24' />
                 <div className='mt-3 capitalize text-gray-500'>Giỏ hàng của bạn còn trống</div>
                 <div className='mt-3'>
                   <Link
                     to={path.home}
-                    className='flex h-10 w-40 items-center justify-center bg-red-500 text-sm text-white hover:bg-red-600 sm:mt-0'
+                    className='flex h-10 w-40 items-center justify-center bg-red-500 text-sm text-white hover:bg-red-600 sm:mt-5'
                   >
                     MUA NGAY
                   </Link>
@@ -316,7 +323,7 @@ export default function Cart() {
 
             <div className='mt-5 flex flex-col items-center sm:ml-auto sm:mt-0 sm:flex-row'>
               <div>
-                <div className='flex items-center sm:justify-end'>
+                <div className='mb-3 flex items-center sm:mb-0 sm:justify-end'>
                   <div>Tổng thanh toán ({checkedPurchasesCount}) sản phẩm:</div>
                   <div className='ml-2 text-2xl text-orange'>₫{formatCurrency(totalCheckedPurchasePrice)}</div>
                 </div>
@@ -337,8 +344,8 @@ export default function Cart() {
         )}
         {productsData && (
           <div className='mt-10 p-4 shadow'>
-            <div className='flex items-center justify-between'>
-              <div className='text-lg capitalize text-gray-500'>CÓ THỂ BẠN CŨNG THÍCH</div>
+            <div className='flex flex-col items-center justify-between sm:flex-row'>
+              <div className='mb-3 text-lg capitalize text-gray-500 sm:mb-0'>CÓ THỂ BẠN CŨNG THÍCH</div>
               <Link to={path.home} className='text-orange'>
                 Xem Tất Cả {'>'}
               </Link>

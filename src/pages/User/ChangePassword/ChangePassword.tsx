@@ -76,7 +76,7 @@ export default function ChangePassword() {
             </div>
           </div>
           <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-            <div className='truncate pt-3 capitalize sm:w-[30%] sm:text-right'>Xác Nhận Mới</div>
+            <div className='truncate pt-3 capitalize sm:w-[30%] sm:text-right'>Mật Khẩu Mới</div>
             <div className='sm:w-[70%] sm:pl-5'>
               <Input
                 register={register}

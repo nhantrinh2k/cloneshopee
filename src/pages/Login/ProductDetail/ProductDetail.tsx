@@ -4,6 +4,8 @@ import DOMPurify from 'dompurify'
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { HelmetProvider, Helmet } from 'react-helmet-async'
+import { convert } from 'html-to-text'
 import productApi from 'src/apis/product.api'
 import purchaseApi from 'src/apis/purchase.api'
 import ProductRating from 'src/components/ProductRating'
@@ -91,10 +93,25 @@ export default function ProductDetail() {
   if (!product) return null
   return (
     <div className='bg-gray-200 py-6'>
+      <HelmetProvider>
+        <Helmet>
+          <title>{product.name} | Shopee Clone</title>
+          <meta
+            name='description'
+            content={convert(product.description, {
+              limits: {
+                ellipsis: '...',
+                maxInputLength: 200
+              }
+            })}
+            data-react-helmet='true'
+          />
+        </Helmet>
+      </HelmetProvider>
       <div className='container'>
         <div className='bg-white p-4 shadow'>
-          <div className='grid grid-cols-12 gap-9'>
-            <div className='col-span-5'>
+          <div className='grid grid-cols-12 md:gap-9'>
+            <div className='col-span-12 mb-5 text-center md:col-span-5'>
               <div className='relative w-full pt-[100%] shadow'>
                 <img
                   src={activeImage}
@@ -148,8 +165,8 @@ export default function ProductDetail() {
                 })}
               </div>
             </div>
-            <div className='col-span-7'>
-              <h1 className='text-xl font-medium uppercase'>{product.name}</h1>
+            <div className='col-span-12 md:col-span-7'>
+              <h1 className='text-[18px] font-medium uppercase leading-7 md:text-xl'>{product.name}</h1>
               <div className='mt-6 flex items-center'>
                 <div className='flex items-center'>
                   <span className='mr-2 border-b border-b-orange text-orange'>{product.rating}</span>
@@ -166,11 +183,11 @@ export default function ProductDetail() {
                 </div>
               </div>
               <div className='mt-5 flex items-center bg-gray-50 px-5 py-4'>
-                <div className='mr-3 text-base text-gray-500 line-through'>
+                <div className='mr-3 text-sm text-gray-500 line-through md:text-base'>
                   ₫{formatCurrency(product.price_before_discount)}
                 </div>
-                <div className='text-[30px] text-orange'>₫{formatCurrency(product.price)}</div>
-                <div className='ml-4 rounded-sm bg-orange px-1 py-[2px] text-xs font-semibold uppercase text-white'>
+                <div className='text-[24px] text-orange md:text-[30px]'>₫{formatCurrency(product.price)}</div>
+                <div className='ml-4 rounded-sm bg-orange px-1 py-[2px] text-center text-xs font-semibold uppercase text-white'>
                   {rateSale(product.price_before_discount, product.price)} GIẢM
                 </div>
               </div>

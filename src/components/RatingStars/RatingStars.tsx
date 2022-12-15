@@ -32,7 +32,7 @@ export default function RatingStars({ queryConfig }: Props) {
           return (
             <li className='py-[6px] pl-2' key={index}>
               <div
-                className={classNames('flex items-center text-sm', {
+                className={classNames('flex items-center text-[13px] lg:text-sm', {
                   'w-[60%] rounded-xl bg-gray-300 p-[1px]': isActiveFilterStar
                 })}
                 onClick={() => handleFilterStar(5 - index)}

@@ -39,7 +39,7 @@ export default function HistoryPurchase() {
         }).toString()
       }}
       className={classNames(
-        'flex flex-1 items-center justify-center border-b-2 bg-white py-4 text-center text-lg hover:text-orange',
+        'text-md flex flex-1 items-center justify-center border-b-2 bg-white py-4  text-center hover:text-orange ',
         {
           'border-b-orange text-orange': status === tab.status,
           'border-b-black/10 text-gray-900': status != tab.status
