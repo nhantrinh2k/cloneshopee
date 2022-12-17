@@ -75,19 +75,31 @@ export default function ProductDetail() {
         onSuccess: (data) => {
           toast.success(data.data.message, { autoClose: 1500 })
           queryClient.invalidateQueries({ queryKey: ['purchases', { status: purchasesStatus.inCart }] })
+        },
+        onError: (err) => {
+          navigate(path.login)
         }
       }
     )
   }
 
-  const buyNow = async () => {
-    const res = await addToCartMutation.mutateAsync({ buy_count: buyCount, product_id: product?._id as string })
-    const purchase = res.data.data
-    navigate(path.cart, {
-      state: {
-        purchaseId: purchase._id
+  const buyNow = () => {
+    addToCartMutation.mutate(
+      { buy_count: buyCount, product_id: product?._id as string },
+      {
+        onSuccess: (data) => {
+          const purchase = data.data.data
+          navigate(path.cart, {
+            state: {
+              purchaseId: purchase._id
+            }
+          })
+        },
+        onError: (err) => {
+          navigate(path.login)
+        }
       }
-    })
+    )
   }
 
   if (!product) return null
