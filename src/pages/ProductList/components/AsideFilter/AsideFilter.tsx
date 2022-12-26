@@ -13,6 +13,7 @@ import { QueryConfig } from 'src/hooks/useQueryConfig'
 import { Category } from 'src/types/category.type'
 import { NoUndefinedField } from 'src/types/utils.type'
 import { Schema, schema } from 'src/utils/rules'
+import { useTranslation } from 'react-i18next'
 
 interface Props {
   queryConfig: QueryConfig
@@ -23,6 +24,7 @@ type FormData = NoUndefinedField<Pick<Schema, 'price_max' | 'price_min'>>
 const priceSchema = schema.pick(['price_min', 'price_max'])
 
 export default function AsideFilter({ queryConfig, categories }: Props) {
+  const { t } = useTranslation()
   const [openMenu, setOpenMenu] = useState(false)
   const handleClickOpenMenu = () => {
     setOpenMenu((prev) => !prev)
@@ -107,7 +109,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
           >
             <path strokeLinecap='round' strokeLinejoin='round' d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5' />
           </svg>
-          Tất cả danh mục
+          {t('all categories')}
         </Link>
         <div className='my-4 h-[1px] bg-gray-300'></div>
         <ul>
@@ -160,11 +162,11 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
               d='M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5'
             />
           </svg>
-          BỘ LỌC TÌM KIẾM
+          {t('filter search')}
         </Link>
         <div className='my-4 h-[1px] bg-gray-300'></div>
         <div className='my-5'>
-          <div>Khoảng Giá</div>
+          <div>{t('filter price')}</div>
           <form className='mt-2' onSubmit={onSubmit}>
             <div className='flex items-start'>
               <Controller
@@ -215,19 +217,19 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
               {errors.price_min?.message}
             </div>
             <Button className='flex w-full items-center justify-center bg-orange p-2 text-sm uppercase text-white hover:bg-orange/80'>
-              Áp dụng
+              {t('filter apply')}
             </Button>
           </form>
         </div>
         <div className='my-4 h-[1px] bg-gray-300'></div>
-        <div className='text-sm'>Đánh Giá</div>
+        <div className='text-sm'> {t('filter rating')}</div>
         <RatingStars queryConfig={queryConfig} />
         <div className='my-4 h-[1px] bg-gray-300'></div>
         <Button
           onClick={handleRemoveFilter}
           className='flex w-full items-center justify-center bg-orange p-2 text-sm uppercase text-white hover:bg-orange/80'
         >
-          Xóa Tất Cả
+          {t('filter clear')}
         </Button>
       </div>
     </div>

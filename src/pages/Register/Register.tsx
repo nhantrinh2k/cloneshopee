@@ -13,10 +13,12 @@ import { ErrorResponApi } from 'src/types/utils.type'
 import { useContext } from 'react'
 import { AppContext } from 'src/contexts/app.context'
 import Button from 'src/components/Button'
+import { useTranslation } from 'react-i18next'
 
 type FormData = Pick<Schema, 'email' | 'password' | 'confirm_password'>
 const registerSchema = schema.pick(['email', 'password', 'confirm_password'])
 export default function Register() {
+  const { t } = useTranslation()
   const { setIsAuthenticated, setProfile } = useContext(AppContext)
   const navigate = useNavigate()
   const {
@@ -66,7 +68,7 @@ export default function Register() {
         <div className='grid grid-cols-1 py-12 lg:grid-cols-5 lg:py-32 lg:pr-10'>
           <div className='lg:col-span-2 lg:col-start-4'>
             <form className='shadow-sn rounded bg-white p-10' onSubmit={onSubmit} noValidate>
-              <div className='text-2xl'>Đăng ký</div>
+              <div className='text-2xl'>{t('nav sign up')}</div>
               <Input
                 name='email'
                 register={register}
@@ -102,13 +104,13 @@ export default function Register() {
                   isLoading={registerAccountMutation.isLoading}
                   disabled={registerAccountMutation.isLoading}
                 >
-                  Đăng ký
+                  {t('nav sign up')}
                 </Button>
               </div>
               <div className='mt-8 flex items-center justify-center'>
                 <span className='text-gray-300'>Bạn đã có tài khoản?</span>
                 <Link className='ml-1 text-red-400' to='/login'>
-                  Đăng nhập
+                  {t('nav login')}
                 </Link>
               </div>
             </form>

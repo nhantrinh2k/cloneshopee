@@ -8,17 +8,19 @@ import { purchasesStatus } from 'src/constants/purchase'
 import useQueryParams from 'src/hooks/useQueryParams'
 import { PurchaseListStatus } from 'src/types/purchase.type'
 import { formatCurrency, generateNameId } from 'src/utils/utils'
-
-const purchaseTabs = [
-  { status: purchasesStatus.all, name: 'Tất cả' },
-  { status: purchasesStatus.waitForConfirmation, name: 'Chờ xác nhận' },
-  { status: purchasesStatus.waitForGetting, name: 'Chờ lấy hàng' },
-  { status: purchasesStatus.inProgress, name: 'Đang giao' },
-  { status: purchasesStatus.delivered, name: 'Đã giao' },
-  { status: purchasesStatus.cancelled, name: 'Đã hủy' }
-]
+import { useTranslation } from 'react-i18next'
 
 export default function HistoryPurchase() {
+  const { t } = useTranslation()
+  const purchaseTabs = [
+    { status: purchasesStatus.all, name: t('all purchase') },
+    { status: purchasesStatus.waitForConfirmation, name: t('confirmation purchase') },
+    { status: purchasesStatus.waitForGetting, name: t('getting purchase') },
+    { status: purchasesStatus.inProgress, name: t('receive purchase') },
+    { status: purchasesStatus.delivered, name: t('completed purchase') },
+    { status: purchasesStatus.cancelled, name: t('cancelled purchase') }
+  ]
+
   const queryParams: { status?: string } = useQueryParams()
   const status: number = Number(queryParams.status) || purchasesStatus.all
 
@@ -79,7 +81,7 @@ export default function HistoryPurchase() {
                 <div className='relative my-3 h-0 w-full border-[0.5px] border-dotted border-b-colordotted'></div>
                 <div className='flex justify-end'>
                   <div className='py-3'>
-                    <span className='text-[16px]'>Tổng số tiền:</span>
+                    <span className='text-[16px]'>{t('order total purchase')}:</span>
                     <span className='ml-3 text-xl text-orange'>
                       ₫{formatCurrency(purchase.product.price * purchase.buy_count)}
                     </span>

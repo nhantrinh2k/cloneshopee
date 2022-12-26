@@ -11,10 +11,12 @@ import useSearchProducts from 'src/hooks/useSearchProducts'
 import { formatCurrency } from 'src/utils/utils'
 import NavHeader from '../NavHeader'
 import Popover from '../Popover'
+import { useTranslation } from 'react-i18next'
 
 const MAX_PURCHASES = 5
 
 export default function Header() {
+  const { t } = useTranslation()
   const { isAuthenticated } = useContext(AppContext)
   const { onSubmitSearch, register } = useSearchProducts()
 
@@ -71,7 +73,7 @@ export default function Header() {
                 <div className='max-w-[400px] rounded-sm border border-gray-200 bg-white text-sm shadow-md'>
                   {purchasesInCart && purchasesInCart.length > 0 ? (
                     <div className='p-2'>
-                      <div className='capitalize text-gray-400'>Sản Phẩm Mới Thêm</div>
+                      <div className='capitalize text-gray-400'>{t('added products')}</div>
                       <div className='mt-5'>
                         {purchasesInCart.slice(0, MAX_PURCHASES).map((purchase) => (
                           <div className='mt-2 py-2 hover:bg-gray-100' key={purchase._id}>
@@ -93,21 +95,21 @@ export default function Header() {
                       </div>
                       <div className='mt-6 flex items-center justify-between'>
                         <div className='text-xs capitalize text-gray-500'>
-                          {purchasesInCart.length > MAX_PURCHASES ? purchasesInCart.length - MAX_PURCHASES : ''} Thêm
-                          hàng vào giỏ
+                          {purchasesInCart.length > MAX_PURCHASES ? purchasesInCart.length - MAX_PURCHASES : ''}
+                          {t('added products in cart')}
                         </div>
                         <Link
                           to={path.cart}
                           className='rounded-sm bg-orange px-4 py-2 capitalize text-white hover:bg-opacity-90'
                         >
-                          Xem giỏ hàng
+                          {t('view shopping cart')}
                         </Link>
                       </div>
                     </div>
                   ) : (
                     <div className='flex h-[300px] w-[300px] flex-col items-center justify-center p-2'>
                       <img src={cartempty} alt='cart empty' className='h-24 w-24' />
-                      <div className='mt-3 capitalize'>Chưa Có Sản Phẩm</div>
+                      <div className='mt-3 capitalize'>{t('no product in cart')}</div>
                     </div>
                   )}
                 </div>

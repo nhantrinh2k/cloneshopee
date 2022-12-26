@@ -12,10 +12,12 @@ import { AppContext } from 'src/contexts/app.context'
 import { ErrorResponApi } from 'src/types/utils.type'
 import { Schema, schema } from 'src/utils/rules'
 import { isAxiosUnprocessableEntityError } from 'src/utils/utils'
+import { useTranslation } from 'react-i18next'
 
 type FormData = Pick<Schema, 'email' | 'password'>
 const loginSchema = schema.pick(['email', 'password'])
 export default function Login() {
+  const { t } = useTranslation()
   const { setIsAuthenticated, setProfile } = useContext(AppContext)
   const navigate = useNavigate()
   const {
@@ -79,7 +81,7 @@ export default function Login() {
         <div className='grid grid-cols-1 py-12 lg:grid-cols-5 lg:py-32 lg:pr-10'>
           <div className='lg:col-span-2 lg:col-start-4'>
             <form className='shadow-sn rounded bg-white p-10' onSubmit={onSubmit} noValidate>
-              <div className='text-2xl'>Đăng nhập</div>
+              <div className='text-2xl'> {t('nav login')}</div>
               <div className='mt-8'>
                 <Input
                   name='email'
@@ -109,13 +111,13 @@ export default function Login() {
                   isLoading={loginAccountMutation.isLoading}
                   disabled={loginAccountMutation.isLoading}
                 >
-                  Đăng nhập
+                  {t('nav login')}
                 </Button>
               </div>
               <div className='mt-8 flex items-center justify-center'>
                 <span className='text-gray-300'>Bạn mới biết đến shopee?</span>
                 <Link className='ml-1 text-red-400' to='/register'>
-                  Đăng ký
+                  {t('nav sign up')}
                 </Link>
               </div>
             </form>
