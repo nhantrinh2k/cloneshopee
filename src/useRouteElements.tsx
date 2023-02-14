@@ -6,6 +6,7 @@ import CartLayout from './layouts/CartLayout'
 import MainLayOut from './layouts/MainLayout'
 import RegisterLayout from './layouts/RegisterLayout'
 import Cart from './pages/Cart'
+import Home from './pages/Home'
 import Login from './pages/Login'
 import ProductDetail from './pages/Login/ProductDetail'
 import PageNotFound from './pages/PageNotFound'
@@ -98,6 +99,14 @@ export default function useRouteElements() {
     {
       path: '',
       index: true,
+      element: (
+        <MainLayOut>
+          <Home />
+        </MainLayOut>
+      )
+    },
+    {
+      path: path.productList,
       element: (
         <MainLayOut>
           <ProductList />

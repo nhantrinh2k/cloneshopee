@@ -26,7 +26,9 @@ module.exports = {
         yellowratesale: 'rgba(255,212,36,.9)',
         orangebuttoncart: 'rgba(255,87,34,.1)',
         colordotted: 'rgba(0, 0, 0, 0.09)',
-        colortextfooter: 'rgba(0,0,0,.65)'
+        colortextfooter: 'rgba(0,0,0,.65)',
+        colordottedslide: 'hsla(0,0%,100%,.4)',
+        colordottedborder: 'hsla(0,0%,53.7%,.4)'
       },
       backgroundImage: {
         'not-found': "url('https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif')",

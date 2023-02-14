@@ -26,7 +26,7 @@ export default function SortProductList({ queryConfig, pageSize }: Props) {
 
   const handleSort = (sortByValue: Exclude<ProductListConfig['sort_by'], undefined>) => {
     navigate({
-      pathname: path.home,
+      pathname: path.productList,
       search: createSearchParams(
         omit(
           {
@@ -41,7 +41,7 @@ export default function SortProductList({ queryConfig, pageSize }: Props) {
 
   const handlePriceOrder = (orderValue: Exclude<ProductListConfig['order'], undefined>) => {
     navigate({
-      pathname: path.home,
+      pathname: path.productList,
       search: createSearchParams({
         ...queryConfig,
         sort_by: sortBy.price,
@@ -127,7 +127,7 @@ export default function SortProductList({ queryConfig, pageSize }: Props) {
             ) : (
               <Link
                 to={{
-                  pathname: path.home,
+                  pathname: path.productList,
                   search: createSearchParams({
                     ...queryConfig,
                     page: (page - 1).toString()
@@ -164,7 +164,7 @@ export default function SortProductList({ queryConfig, pageSize }: Props) {
             ) : (
               <Link
                 to={{
-                  pathname: path.home,
+                  pathname: path.productList,
                   search: createSearchParams({
                     ...queryConfig,
                     page: (page + 1).toString()

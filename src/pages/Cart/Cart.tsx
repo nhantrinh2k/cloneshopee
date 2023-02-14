@@ -220,7 +220,7 @@ export default function Cart() {
                           <div className='flex'>
                             <Link
                               className='t h-20 w-20 flex-shrink-0'
-                              to={`${path.home}${generateNameId({
+                              to={`${path.productList}${generateNameId({
                                 name: purchase.product.name,
                                 id: purchase.product._id
                               })}`}
@@ -229,7 +229,7 @@ export default function Cart() {
                             </Link>
                             <div className='flex-grow px-5 pt-1 pb-2 text-left'>
                               <Link
-                                to={`${path.home}${generateNameId({
+                                to={`${path.productList}${generateNameId({
                                   name: purchase.product.name,
                                   id: purchase.product._id
                                 })}`}
@@ -296,7 +296,7 @@ export default function Cart() {
                 <div className='mt-3 capitalize text-gray-500'>{t('cart empty')}</div>
                 <div className='mt-3'>
                   <Link
-                    to={path.home}
+                    to={path.productList}
                     className='flex h-10 w-40 items-center justify-center bg-red-500 text-sm text-white hover:bg-red-600 sm:mt-5'
                   >
                     {t('shopping now')}
@@ -352,7 +352,7 @@ export default function Cart() {
           <div className='mt-10 p-4 shadow'>
             <div className='flex flex-col items-center justify-between sm:flex-row'>
               <div className='mb-3 text-lg capitalize text-gray-500 sm:mb-0'>{t('also like')}</div>
-              <Link to={path.home} className='text-orange'>
+              <Link to={path.productList} className='text-orange'>
                 {t('view all')} {'>'}
               </Link>
             </div>

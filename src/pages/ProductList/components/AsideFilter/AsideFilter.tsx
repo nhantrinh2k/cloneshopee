@@ -48,7 +48,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
 
   const onSubmit = handleSubmit((data) => {
     navigate({
-      pathname: path.home,
+      pathname: path.productList,
       search: createSearchParams({
         ...queryConfig,
         price_max: data.price_max,
@@ -59,7 +59,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
 
   const handleRemoveFilter = () => {
     navigate({
-      pathname: path.home,
+      pathname: path.productList,
       search: createSearchParams(omit(queryConfig, ['price_min', 'price_max', 'rating_filter', 'category'])).toString()
     })
   }
@@ -73,7 +73,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
           viewBox='0 0 24 24'
           strokeWidth={1.5}
           stroke='currentColor'
-          className='absolute right-8 top-[20rem] h-10 w-10 cursor-pointer md:hidden'
+          className='absolute right-8 top-[23rem] h-10 w-10 cursor-pointer md:hidden'
           onClick={handleClickOpenMenu}
         >
           <path strokeLinecap='round' strokeLinejoin='round' d='M6 18L18 6M6 6l12 12' />
@@ -85,7 +85,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
           viewBox='0 0 24 24'
           strokeWidth={1.5}
           stroke='currentColor'
-          className='absolute top-[20rem] right-8 h-10 w-10 cursor-pointer md:hidden'
+          className='absolute top-[23rem] right-8 h-10 w-10 cursor-pointer md:hidden'
           onClick={handleClickOpenMenu}
         >
           <path strokeLinecap='round' strokeLinejoin='round' d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5' />
@@ -94,7 +94,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
 
       <div className={`${!openMenu ? 'hidden md:inline' : 'opacity-100'}`}>
         <Link
-          to={path.home}
+          to={path.productList}
           className={classNames('flex items-center font-bold', {
             'text-orange': !category
           })}
@@ -119,7 +119,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
               <li className='py-2 pl-2' key={categoryItem._id}>
                 <Link
                   to={{
-                    pathname: path.home,
+                    pathname: path.productList,
                     search: createSearchParams({
                       ...queryConfig,
                       category: categoryItem._id
@@ -147,7 +147,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
             )
           })}
         </ul>
-        <Link to={path.home} className='mt-4 flex items-center font-bold uppercase'>
+        <Link to={path.productList} className='mt-4 flex items-center font-bold uppercase'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
