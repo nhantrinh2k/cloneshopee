@@ -57,15 +57,15 @@ export default function Home() {
               <Link to={path.productList}>
                 <div
                   style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-                  className='h-full w-full rounded-sm bg-cover bg-center duration-200 ease-out'
+                  className='h-full w-full rounded-sm bg-cover bg-center bg-no-repeat duration-200 ease-out'
                 ></div>
               </Link>
               {/* Left Arrow */}
-              <div className='absolute top-[50%] left-2 hidden -translate-x-0 translate-y-[-50%] cursor-pointer select-none rounded-full bg-black/20 p-2 text-2xl text-white group-hover:block'>
+              <div className='absolute top-[50%] left-2 -translate-x-0 translate-y-[-50%] cursor-pointer select-none rounded-full bg-black/20 p-2 text-2xl text-white group-hover:block lg:hidden'>
                 <BsChevronCompactLeft onClick={prevSlide} size={30} />
               </div>
               {/* Right Arrow */}
-              <div className='absolute top-[50%] right-2 hidden -translate-x-0 translate-y-[-50%] cursor-pointer select-none rounded-full bg-black/20 p-2 text-2xl text-white group-hover:block'>
+              <div className='absolute top-[50%] right-2 -translate-x-0 translate-y-[-50%] cursor-pointer select-none rounded-full bg-black/20 p-2 text-2xl text-white group-hover:block lg:hidden'>
                 <BsChevronCompactRight onClick={nextSlide} size={30} />
               </div>
               <div className='absolute top-[75%] left-[35%] z-10 flex -translate-y-0 justify-center py-2 outline-none md:left-[45%]'>
@@ -93,7 +93,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className='flex gap-2 pb-8 xl:flex-col xl:gap-0 xl:py-8'>
+          <div className='xs:flex-col gap-2 pb-8 md:flex lg:flex xl:flex-col xl:gap-0 xl:py-8'>
             <Link to={path.productList}>
               <img src={image1} alt='image1' className='max-w-full cursor-pointer rounded-sm bg-cover bg-center pb-1' />
             </Link>
